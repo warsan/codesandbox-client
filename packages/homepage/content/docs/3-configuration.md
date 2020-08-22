@@ -1,37 +1,36 @@
 ---
 title: Configuration
 authors: ['CompuIves']
-description: You can configure sandboxes and templates with configuration files.
+description: Вы можете настроить песочницы и шаблоны с файлами конфигурации.
 ---
 
-## Configuration Files
+## Файлы конфигурации
 
-There are some advanced use cases where you might need more control over a
-sandbox or template. That's why we support configuration files. Every template
-on CodeSandbox has a list of configuration files it supports. You can see the
-supported files under Configuration Files from the left-hand activity bar in the
-editor.
+Существуют некоторые расширенные случаи использования, в которых вам может потребоваться больше контроля над песочницей или шаблоном. 
+Вот почему мы поддерживаем конфигурационные файлы. 
+Каждый шаблон на CodeSandbox имеет список поддерживаемых им конфигурационных файлов. 
+Поддерживаемые файлы можно посмотреть в разделе Конфигурационные файлы с левой панели действий редактора.
 
 ![Configurations File UI](./images/configuration.png)
 
-## Configuration UI
+## Конфигурационный интерфейс
 
-Some configuration files can be configured using a UI. This UI will generate a
-configuration file based on its state.
+Некоторые конфигурационные файлы могут быть настроены с помощью пользовательского интерфейса. 
+Этот пользовательский интерфейс сгенерирует конфигурационный файл на основе его состояния.
 
 ![Configurations File UI](./images/ui-configuration.png)
 
-## Sandbox Configuration
+## Конфигурация песочницы
 
-A sandbox can be configured too, you can do this with `sandbox.config.json`. We
-support these options:
+Песочницу тоже можно настроить, это можно сделать с помощью `sandbox.config.json`. 
+Мы поддерживаем эти варианты:
 
 | Option                   | Description                                                                                                                                   | Possible Values                                                                                                    | Default Value                                      |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------- |
-| `infiniteLoopProtection` | Whether we should throw an error if we detect an infinite loop                                                                                | `true`/`false`                                                                                                     | `true`                                             |
-| `hardReloadOnChange`     | Whether we should refresh the sandbox page on every change, good for sandboxes with global state                                              | `true`/`false`                                                                                                     | `false`                                            |
-| `template`               | Which sandbox template to use                                                                                                                 | [see here](https://github.com/codesandbox/codesandbox-importers/blob/master/packages/types/index.d.ts#L34-L59) | smart detection, w/ fallback to `create-react-app` |
-| `view`                   | Which view to show first in the preview                                                                                                       | Client: `browser`/`console`/`problems`/`tests`<br />Container: `browser`/`console`/`problems`/`terminal`           | `browser`                                          |
-| `container`              | The container object contains the configurable port and/or startScript option, for example: `container: { port: 3212, startScript: "custom"}` |
-| `port`                   | The main port which the browser window listens to                                                                                             | 1024 - 65535                                                                                                       | First opened port inside the container.            |
-| `startScript`            | Explicitly specify the start script used in a container sandbox, overriding the default value                                                 | A String matching a script name defined under `scripts` in `package.json`                                          | `dev` / `develop` / `serve` / `start`              |
+| `infiniteLoopProtection` | Следует ли выдавать ошибку, если мы обнаруживаем бесконечный цикл                                                                                | `true`/`false`                                                                                                     | `true`                                             |
+| `hardReloadOnChange`     | Нужно ли обновлять страницу песочницы при каждом изменении, хорошо ли это для песочницы с глобальным состоянием.                                              | `true`/`false`                                                                                                     | `false`                                            |
+| `template`               | Какой шаблон песочницы использовать                                                              | [see here](https://github.com/codesandbox/codesandbox-importers/blob/master/packages/types/index.d.ts#L34-L59) | smart detection, w/ fallback to `create-react-app` |
+| `view`                   | Какой вид показать первым в предварительном просмотре.                                                                                                       | Client: `browser`/`console`/`problems`/`tests`<br />Container: `browser`/`console`/`problems`/`terminal`           | `browser`                                          |
+| `container`              | Объект-контейнер содержит, например, настраиваемый порт и/или опцию startScript: `container: { port: 3212, startScript: "custom"}` |
+| `port`                   | Основной порт, который прослушивает окно браузера                                                                                             | 1024 - 65535                                                                                                       | Первый открытый порт внутри контейнера.            |
+| `startScript`            | Явно укажите стартовый сценарий, используемый в песочнице контейнеров, переопределив значение по умолчанию                                    | Строка, совпадающая с именем скрипта, определенным в разделе `scripts` на `package.json`                                          | `dev` / `develop` / `serve` / `start`              |
